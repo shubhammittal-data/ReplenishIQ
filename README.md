@@ -10,6 +10,8 @@ A comprehensive inventory management and analytics system designed for retail su
 
 ![Dashboard Overview](images/dashboard_overview.png)
 
+🔗 **[View Live Dashboard](https://shubhammittal-data.github.io/ReplenishIQ/)**
+
 ## Overview
 
 ReplenishIQ addresses common supply chain challenges:
@@ -23,7 +25,7 @@ ReplenishIQ addresses common supply chain challenges:
 
 ### 1. Data Pipeline
 - Synthetic data generation for 500 SKUs across 5 categories
-- 12 months of transactional data (~920K records)
+- 24 months of transactional data (~920K records)
 - PostgreSQL database with star schema design
 
 ### 2. SQL Analytics Layer
@@ -114,9 +116,9 @@ replenishiq/
 | C | 187 | 20% |
 | D | 112 | 5% |
 
-## SQL Query Example
+## SQL Query Examples
 
-**Inventory Turnover by Category:**
+**1. Inventory Turnover by Category:**
 ```sql
 SELECT 
     p.category,
@@ -126,6 +128,39 @@ JOIN dim_products p ON s.sku_id = p.sku_id
 JOIN fact_inventory i ON s.sku_id = i.sku_id
 GROUP BY p.category
 ORDER BY inventory_turns DESC;
+```
+
+**2. Stockout Frequency Analysis:**
+```sql
+WITH stockout_days AS (
+    SELECT 
+        sku_id,
+        COUNT(*) AS stockout_count,
+        SUM(CASE WHEN on_hand_qty = 0 THEN 1 ELSE 0 END) AS days_out
+    FROM fact_inventory
+    GROUP BY sku_id
+)
+SELECT 
+    p.category,
+    AVG(s.days_out) AS avg_stockout_days,
+    SUM(s.stockout_count) AS total_stockouts
+FROM stockout_days s
+JOIN dim_products p ON s.sku_id = p.sku_id
+GROUP BY p.category;
+```
+
+**3. Supplier Performance Scorecard:**
+```sql
+SELECT 
+    sup.supplier_name,
+    COUNT(o.order_id) AS total_orders,
+    AVG(o.actual_delivery_date - o.expected_delivery_date) AS avg_delay_days,
+    SUM(CASE WHEN o.actual_delivery_date <= o.expected_delivery_date THEN 1 ELSE 0 END)::FLOAT 
+        / COUNT(*) AS on_time_rate
+FROM fact_replenishment_orders o
+JOIN dim_suppliers sup ON o.supplier_id = sup.supplier_id
+GROUP BY sup.supplier_name
+ORDER BY on_time_rate DESC;
 ```
 
 ## Future Enhancements
