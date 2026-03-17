@@ -57,8 +57,7 @@ ReplenishIQ addresses common supply chain challenges:
 replenishiq/
 ├── src/
 │   ├── data/
-│   │   ├── generate_data.py      # Synthetic data generation
-│   │   └── db_setup.py           # PostgreSQL schema setup
+│   │   └── data_generation.py    # Synthetic data generation
 │   ├── analytics/
 │   │   ├── forecasting.py        # Demand forecasting models
 │   │   ├── clustering.py         # SKU segmentation
@@ -66,13 +65,9 @@ replenishiq/
 │   ├── exceptions/
 │   │   └── alert_engine.py       # Exception detection
 │   └── reporting/
-│       ├── tableau_export.py     # Dashboard data preparation
-│       └── dashboard_matplotlib.py # Visualization generation
-├── sql/
-│   └── analysis_queries.sql      # Analytical SQL queries
-├── data/
-│   ├── raw/                      # Source data
-│   └── processed/                # Transformed data
+│       └── dashboard_matplotlib.py # Dashboard visualization
+├── sql/                          # Analytical SQL queries
+├── data/sample/                  # Sample data files
 ├── requirements.txt
 └── main.py
 ```
@@ -86,67 +81,8 @@ replenishiq/
 | Data Processing | Pandas, NumPy |
 | Machine Learning | Scikit-learn |
 | Visualization | Matplotlib, Seaborn |
-| Database Connector | psycopg2 |
 
-## Installation
-
-```bash
-# Clone repository
-git clone https://github.com/yourusername/replenishiq.git
-cd replenishiq
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your PostgreSQL credentials
-```
-
-## Configuration
-
-Create a `.env` file with your database credentials:
-
-```
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=replenishiq
-DB_USER=your_username
-DB_PASSWORD=your_password
-```
-
-## Usage
-
-### Generate Sample Data
-```bash
-python -m src.data.generate_data
-```
-
-### Run Forecasting
-```bash
-python -m src.analytics.forecasting
-```
-
-### Run Clustering
-```bash
-python -m src.analytics.clustering
-```
-
-### Run Alert Detection
-```bash
-python -m src.exceptions.alert_engine
-```
-
-### Generate Dashboard
-```bash
-python -m src.reporting.dashboard_matplotlib
-```
-
-## Sample Results
+## Results
 
 ### Forecasting Performance
 | Model | Average MAE |
@@ -170,7 +106,7 @@ python -m src.reporting.dashboard_matplotlib
 | C | 187 | 20% |
 | D | 112 | 5% |
 
-## SQL Query Examples
+## SQL Query Example
 
 **Inventory Turnover by Category:**
 ```sql
@@ -190,15 +126,10 @@ ORDER BY inventory_turns DESC;
 - [ ] API endpoints for integration
 - [ ] Advanced ML models (LSTM, Prophet)
 - [ ] Multi-warehouse support
-- [ ] Cost optimization module
-
-## License
-
-MIT License - see LICENSE file for details.
 
 ## Author
 
-[Your Name]
+Shubham Mittal
 
 ---
 
