@@ -6,6 +6,10 @@ A comprehensive inventory management and analytics system designed for retail su
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+## Dashboard Preview
+
+![Dashboard Overview](images/dashboard_overview.png)
+
 ## Overview
 
 ReplenishIQ addresses common supply chain challenges:
@@ -35,10 +39,14 @@ ReplenishIQ addresses common supply chain challenges:
 - **Linear Regression**: Trend + seasonality features
 - Automatic model selection based on MAE
 
+![Forecasting Comparison](images/forecasting_comparison.png)
+
 ### 4. SKU Clustering
 - K-Means clustering on 5 features
 - Silhouette score validation
 - A/B/C/D segmentation by revenue contribution
+
+![SKU Clusters](images/sku_clusters.png)
 
 ### 5. Exception Alert System
 - 6 alert types: Stockout, Low Stock, Overstock, SLG Breach, Demand Spike, Supplier Delay
