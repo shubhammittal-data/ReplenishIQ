@@ -1,0 +1,8 @@
+metric,value,format
+Total Revenue,537231967.3199999,currency
+Total Units Sold,5828489.0,number
+In-Stock Rate,84.46073871409028,percent
+Stockout Rate,15.539261285909713,percent
+Overstock Rate,14.646511627906978,percent
+Total Carrying Cost,1921407.76,currency
+SKU Count,500.0,number

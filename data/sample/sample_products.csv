@@ -1,0 +1,6 @@
+sku_id,product_name,category,unit_price,safety_stock,reorder_point,max_stock_level,lead_time_days,supplier_id,slg_target
+SKU001,Premium Stapler,Office Supplies,24.99,50,75,200,7,SUP001,0.95
+SKU002,Executive Chair,Furniture,299.99,10,15,50,14,SUP002,0.95
+SKU003,Wireless Mouse,Technology,34.99,100,150,400,5,SUP003,0.98
+SKU004,Copy Paper (Case),Office Supplies,45.99,200,300,800,3,SUP001,0.95
+SKU005,Standing Desk,Furniture,549.99,5,8,25,21,SUP002,0.90

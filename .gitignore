@@ -1,0 +1,36 @@
+# Environment
+.env
+venv/
+env/
+__pycache__/
+*.pyc
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data files (too large for GitHub)
+data/processed/*.csv
+data/raw/*.csv
+
+# Tableau working files
+tableau/*.twb
+tableau/*.twbx
+tableau/TABLEAU_SETUP_GUIDE.md
+
+# Generated files
+dashboard.html
+charts/
+
+# Notebooks (learning materials - not part of main project)
+notebooks/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
